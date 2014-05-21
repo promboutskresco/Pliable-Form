@@ -32,11 +32,11 @@
 
 <xsl:template name="renderForm">
   <xsl:param name="formPage" />
-  <xsl:if test="count($formPage/* [pliableField]) &gt; 0">
+  <xsl:if test="count($formPage/* [required]) &gt; 0">
     <div id="PliableForm">
       <xsl:value-of select="$formPage/formContent" disable-output-escaping="yes" />
       <table>
-        <xsl:for-each select="$formPage/* [pliableField]">
+        <xsl:for-each select="$formPage/* [required]">
           <xsl:variable name="name" select="@nodeName" />
           <tr>
             <xsl:choose>

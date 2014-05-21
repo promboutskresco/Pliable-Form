@@ -30,17 +30,17 @@
   <info>
     <package>
       <name>Pliable Form</name>
-      <version>1.3</version>
+      <version>1.4</version>
       <license url="http://www.gnu.org/licenses/gpl.html">GPL</license>
       <url>http://www.c2experience.com/</url>
       <requirements>
-        <major>3</major>
+        <major>4</major>
         <minor>0</minor>
         <patch>0</patch>
       </requirements>
     </package>
     <author>
-      <name>Jon Cuthbert</name>
+      <name>Jon Cuthbert / Peter Rombouts</name>
       <website>http://www.cuth.net/</website>
     </author>
     <readme><![CDATA[]]></readme>
