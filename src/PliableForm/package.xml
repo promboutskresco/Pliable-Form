@@ -1,0 +1,757 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<umbPackage>
+  <files>
+    <file>
+      <guid>PliableForm.xslt</guid>
+      <orgPath>/xslt</orgPath>
+      <orgName>PliableForm.xslt</orgName>
+    </file>
+    <file>
+      <guid>PliableForm_table.xslt</guid>
+      <orgPath>/xslt</orgPath>
+      <orgName>PliableForm_table.xslt</orgName>
+    </file>
+    <file>
+      <guid>PliableForm.dll</guid>
+      <orgPath>/bin</orgPath>
+      <orgName>PliableForm.dll</orgName>
+    </file>
+    <file>
+      <guid>PliableSender.asmx</guid>
+      <orgPath>/umbraco</orgPath>
+      <orgName>PliableSender.asmx</orgName>
+    </file>
+    <file>
+      <guid>PliableForm.js</guid>
+      <orgPath>/scripts</orgPath>
+      <orgName>PliableForm.js</orgName>
+    </file>
+  </files>
+  <info>
+    <package>
+      <name>Pliable Form</name>
+      <version>1.4</version>
+      <license url="http://www.gnu.org/licenses/gpl.html">GPL</license>
+      <url>http://www.c2experience.com/</url>
+      <requirements>
+        <major>4</major>
+        <minor>0</minor>
+        <patch>0</patch>
+      </requirements>
+    </package>
+    <author>
+      <name>Jon Cuthbert / Peter Rombouts</name>
+      <website>http://www.cuth.net/</website>
+    </author>
+    <readme><![CDATA[]]></readme>
+  </info>
+  <DocumentTypes>
+    <DocumentType>
+      <Info>
+        <Name>Pliable Fields</Name>
+        <Alias>PliableFields</Alias>
+        <Icon>folder.gif</Icon>
+        <Thumbnail>folder.png</Thumbnail>
+        <Description>
+        </Description>
+        <AllowedTemplates />
+        <DefaultTemplate>
+        </DefaultTemplate>
+      </Info>
+      <Structure />
+      <GenericProperties>
+        <GenericProperty>
+          <Name>Pliable Field</Name>
+          <Alias>pliableField</Alias>
+          <Type>6c738306-4c17-4d88-b9bd-6546f3771597</Type>
+          <Definition>f0bc4bfb-b499-40d6-ba86-058885a5178c</Definition>
+          <Tab>
+          </Tab>
+          <Mandatory>False</Mandatory>
+          <Validation>
+          </Validation>
+          <Description><![CDATA[]]></Description>
+        </GenericProperty>
+      </GenericProperties>
+      <Tabs />
+    </DocumentType>
+    <DocumentType>
+      <Info>
+        <Name>Pliable Checkbox</Name>
+        <Alias>PliableCheckbox</Alias>
+        <Icon>.sprTreeDeveloperMacro</Icon>
+        <Thumbnail>developer.png</Thumbnail>
+        <Description>
+        </Description>
+        <Master>PliableFields</Master>
+        <AllowedTemplates />
+        <DefaultTemplate>
+        </DefaultTemplate>
+      </Info>
+      <Structure />
+      <GenericProperties>
+        <GenericProperty>
+          <Name>Label</Name>
+          <Alias>label</Alias>
+          <Type>60b7dabf-99cd-41eb-b8e9-4d2e669bbde9</Type>
+          <Definition>1251c96c-185c-4e9b-93f4-b48205573cbd</Definition>
+          <Tab>Field</Tab>
+          <Mandatory>False</Mandatory>
+          <Validation>
+          </Validation>
+          <Description><![CDATA[]]></Description>
+        </GenericProperty>
+        <GenericProperty>
+          <Name>Required</Name>
+          <Alias>required</Alias>
+          <Type>38b352c1-e9f8-4fd8-9324-9a2eab06d97a</Type>
+          <Definition>92897bc6-a5f3-4ffe-ae27-f2e7e33dda49</Definition>
+          <Tab>Field</Tab>
+          <Mandatory>False</Mandatory>
+          <Validation>
+          </Validation>
+          <Description><![CDATA[]]></Description>
+        </GenericProperty>
+        <GenericProperty>
+          <Name>Error Message</Name>
+          <Alias>errorMessage</Alias>
+          <Type>ec15c1e5-9d90-422a-aa52-4f7622c63bea</Type>
+          <Definition>0cc0eba1-9960-42c9-bf9b-60e150b429ae</Definition>
+          <Tab>Field</Tab>
+          <Mandatory>False</Mandatory>
+          <Validation>
+          </Validation>
+          <Description><![CDATA[]]></Description>
+        </GenericProperty>
+        <GenericProperty>
+          <Name>Class</Name>
+          <Alias>class</Alias>
+          <Type>ec15c1e5-9d90-422a-aa52-4f7622c63bea</Type>
+          <Definition>0cc0eba1-9960-42c9-bf9b-60e150b429ae</Definition>
+          <Tab>Field</Tab>
+          <Mandatory>False</Mandatory>
+          <Validation>
+          </Validation>
+          <Description><![CDATA[In addition to class 'pCheckbox'.]]></Description>
+        </GenericProperty>
+        <GenericProperty>
+          <Name>Checked</Name>
+          <Alias>checked</Alias>
+          <Type>38b352c1-e9f8-4fd8-9324-9a2eab06d97a</Type>
+          <Definition>92897bc6-a5f3-4ffe-ae27-f2e7e33dda49</Definition>
+          <Tab>Field</Tab>
+          <Mandatory>False</Mandatory>
+          <Validation>
+          </Validation>
+          <Description><![CDATA[]]></Description>
+        </GenericProperty>
+      </GenericProperties>
+      <Tabs>
+        <Tab>
+          <Id>13</Id>
+          <Caption>Field</Caption>
+        </Tab>
+      </Tabs>
+    </DocumentType>
+    <DocumentType>
+      <Info>
+        <Name>Pliable Checkbox List</Name>
+        <Alias>PliableCheckboxList</Alias>
+        <Icon>.sprTreeDeveloperMacro</Icon>
+        <Thumbnail>developer.png</Thumbnail>
+        <Description>
+        </Description>
+        <Master>PliableFields</Master>
+        <AllowedTemplates />
+        <DefaultTemplate>
+        </DefaultTemplate>
+      </Info>
+      <Structure />
+      <GenericProperties>
+        <GenericProperty>
+          <Name>Label</Name>
+          <Alias>label</Alias>
+          <Type>60b7dabf-99cd-41eb-b8e9-4d2e669bbde9</Type>
+          <Definition>1251c96c-185c-4e9b-93f4-b48205573cbd</Definition>
+          <Tab>Field</Tab>
+          <Mandatory>False</Mandatory>
+          <Validation>
+          </Validation>
+          <Description><![CDATA[]]></Description>
+        </GenericProperty>
+        <GenericProperty>
+          <Name>Class</Name>
+          <Alias>class</Alias>
+          <Type>ec15c1e5-9d90-422a-aa52-4f7622c63bea</Type>
+          <Definition>0cc0eba1-9960-42c9-bf9b-60e150b429ae</Definition>
+          <Tab>Field</Tab>
+          <Mandatory>False</Mandatory>
+          <Validation>
+          </Validation>
+          <Description><![CDATA[In addition to class 'pCheckboxList'.]]></Description>
+        </GenericProperty>
+        <GenericProperty>
+          <Name>Labels and Values</Name>
+          <Alias>labelsAndValues</Alias>
+          <Type>67db8357-ef57-493e-91ac-936d305e0f2a</Type>
+          <Definition>c6bac0dd-4ab9-45b1-8e30-e4b619ee5da3</Definition>
+          <Tab>Field</Tab>
+          <Mandatory>False</Mandatory>
+          <Validation>
+          </Validation>
+          <Description><![CDATA[Use a new line for every checkbox. To set a value different from the label use &gt; (E.g. label>value).]]></Description>
+        </GenericProperty>
+      </GenericProperties>
+      <Tabs>
+        <Tab>
+          <Id>17</Id>
+          <Caption>Field</Caption>
+        </Tab>
+      </Tabs>
+    </DocumentType>
+    <DocumentType>
+      <Info>
+        <Name>Pliable Form</Name>
+        <Alias>PliableForm</Alias>
+        <Icon>.sprTreeNewsletter</Icon>
+        <Thumbnail>developer.png</Thumbnail>
+        <Description>Pliable Form is a custom contact form that allows you to choose the fields that are sent to your email.</Description>
+        <AllowedTemplates>
+          <Template>Form</Template>
+        </AllowedTemplates>
+        <DefaultTemplate>Form</DefaultTemplate>
+      </Info>
+      <Structure>
+        <DocumentType>PliableCheckbox</DocumentType>
+        <DocumentType>PliableRadioList</DocumentType>
+        <DocumentType>PliableSelect</DocumentType>
+        <DocumentType>PliableText</DocumentType>
+        <DocumentType>PliableCheckboxList</DocumentType>
+      </Structure>
+      <GenericProperties>
+        <GenericProperty>
+          <Name>Success Content</Name>
+          <Alias>successContent</Alias>
+          <Type>5e9b75ae-face-41c8-b47e-5f4b0fd82f83</Type>
+          <Definition>ca90c950-0aff-4e72-b976-a30b1ac57dad</Definition>
+          <Tab>Success</Tab>
+          <Mandatory>False</Mandatory>
+          <Validation>
+          </Validation>
+          <Description><![CDATA[]]></Description>
+        </GenericProperty>
+        <GenericProperty>
+          <Name>Error Content</Name>
+          <Alias>errorContent</Alias>
+          <Type>5e9b75ae-face-41c8-b47e-5f4b0fd82f83</Type>
+          <Definition>ca90c950-0aff-4e72-b976-a30b1ac57dad</Definition>
+          <Tab>Error</Tab>
+          <Mandatory>False</Mandatory>
+          <Validation>
+          </Validation>
+          <Description><![CDATA[]]></Description>
+        </GenericProperty>
+        <GenericProperty>
+          <Name>Form Content</Name>
+          <Alias>formContent</Alias>
+          <Type>5e9b75ae-face-41c8-b47e-5f4b0fd82f83</Type>
+          <Definition>ca90c950-0aff-4e72-b976-a30b1ac57dad</Definition>
+          <Tab>Form</Tab>
+          <Mandatory>False</Mandatory>
+          <Validation>
+          </Validation>
+          <Description><![CDATA[]]></Description>
+        </GenericProperty>
+        <GenericProperty>
+          <Name>Submit Button Text</Name>
+          <Alias>submitButtonText</Alias>
+          <Type>ec15c1e5-9d90-422a-aa52-4f7622c63bea</Type>
+          <Definition>0cc0eba1-9960-42c9-bf9b-60e150b429ae</Definition>
+          <Tab>Form</Tab>
+          <Mandatory>True</Mandatory>
+          <Validation>
+          </Validation>
+          <Description><![CDATA[]]></Description>
+        </GenericProperty>
+        <GenericProperty>
+          <Name>To Address</Name>
+          <Alias>toAddress</Alias>
+          <Type>ec15c1e5-9d90-422a-aa52-4f7622c63bea</Type>
+          <Definition>0cc0eba1-9960-42c9-bf9b-60e150b429ae</Definition>
+          <Tab>Email</Tab>
+          <Mandatory>False</Mandatory>
+          <Validation>
+          </Validation>
+          <Description><![CDATA[Semi-colon separated values.]]></Description>
+        </GenericProperty>
+        <GenericProperty>
+          <Name>Email Subject</Name>
+          <Alias>emailSubject</Alias>
+          <Type>ec15c1e5-9d90-422a-aa52-4f7622c63bea</Type>
+          <Definition>0cc0eba1-9960-42c9-bf9b-60e150b429ae</Definition>
+          <Tab>Email</Tab>
+          <Mandatory>False</Mandatory>
+          <Validation>
+          </Validation>
+          <Description><![CDATA[]]></Description>
+        </GenericProperty>
+        <GenericProperty>
+          <Name>Loading Image</Name>
+          <Alias>loadingImage</Alias>
+          <Type>ead69342-f06d-4253-83ac-28000225583b</Type>
+          <Definition>93929b9a-93a2-4e2a-b239-d99334440a59</Definition>
+          <Tab>Form</Tab>
+          <Mandatory>False</Mandatory>
+          <Validation>
+          </Validation>
+          <Description><![CDATA[]]></Description>
+        </GenericProperty>
+        <GenericProperty>
+          <Name>Email Field</Name>
+          <Alias>emailField</Alias>
+          <Type>158aa029-24ed-4948-939e-c3da209e5fba</Type>
+          <Definition>a6857c73-d6e9-480c-b6e6-f15f6ad11125</Definition>
+          <Tab>Auto Responder</Tab>
+          <Mandatory>False</Mandatory>
+          <Validation>
+          </Validation>
+          <Description><![CDATA[Enable the auto responder by choosing an email form field.]]></Description>
+        </GenericProperty>
+        <GenericProperty>
+          <Name>Auto Responder Subject</Name>
+          <Alias>autoResponderSubject</Alias>
+          <Type>ec15c1e5-9d90-422a-aa52-4f7622c63bea</Type>
+          <Definition>0cc0eba1-9960-42c9-bf9b-60e150b429ae</Definition>
+          <Tab>Auto Responder</Tab>
+          <Mandatory>False</Mandatory>
+          <Validation>
+          </Validation>
+          <Description><![CDATA[]]></Description>
+        </GenericProperty>
+        <GenericProperty>
+          <Name>Auto Responder Text</Name>
+          <Alias>autoResponderText</Alias>
+          <Type>67db8357-ef57-493e-91ac-936d305e0f2a</Type>
+          <Definition>c6bac0dd-4ab9-45b1-8e30-e4b619ee5da3</Definition>
+          <Tab>Auto Responder</Tab>
+          <Mandatory>False</Mandatory>
+          <Validation>
+          </Validation>
+          <Description><![CDATA[Leave this blank to send an HTML email.]]></Description>
+        </GenericProperty>
+        <GenericProperty>
+          <Name>Auto Responder Html</Name>
+          <Alias>autoResponderHtml</Alias>
+          <Type>5e9b75ae-face-41c8-b47e-5f4b0fd82f83</Type>
+          <Definition>ca90c950-0aff-4e72-b976-a30b1ac57dad</Definition>
+          <Tab>Auto Responder</Tab>
+          <Mandatory>False</Mandatory>
+          <Validation>
+          </Validation>
+          <Description><![CDATA[]]></Description>
+        </GenericProperty>
+      </GenericProperties>
+      <Tabs>
+        <Tab>
+          <Id>8</Id>
+          <Caption>Form</Caption>
+        </Tab>
+        <Tab>
+          <Id>9</Id>
+          <Caption>Success</Caption>
+        </Tab>
+        <Tab>
+          <Id>10</Id>
+          <Caption>Error</Caption>
+        </Tab>
+        <Tab>
+          <Id>11</Id>
+          <Caption>Email</Caption>
+        </Tab>
+        <Tab>
+          <Id>12</Id>
+          <Caption>Auto Responder</Caption>
+        </Tab>
+      </Tabs>
+    </DocumentType>
+    <DocumentType>
+      <Info>
+        <Name>Pliable Radio List</Name>
+        <Alias>PliableRadioList</Alias>
+        <Icon>.sprTreeDeveloperMacro</Icon>
+        <Thumbnail>developer.png</Thumbnail>
+        <Description>
+        </Description>
+        <Master>PliableFields</Master>
+        <AllowedTemplates />
+        <DefaultTemplate>
+        </DefaultTemplate>
+      </Info>
+      <Structure />
+      <GenericProperties>
+        <GenericProperty>
+          <Name>Label</Name>
+          <Alias>label</Alias>
+          <Type>60b7dabf-99cd-41eb-b8e9-4d2e669bbde9</Type>
+          <Definition>1251c96c-185c-4e9b-93f4-b48205573cbd</Definition>
+          <Tab>Field</Tab>
+          <Mandatory>False</Mandatory>
+          <Validation>
+          </Validation>
+          <Description><![CDATA[]]></Description>
+        </GenericProperty>
+        <GenericProperty>
+          <Name>Required</Name>
+          <Alias>required</Alias>
+          <Type>38b352c1-e9f8-4fd8-9324-9a2eab06d97a</Type>
+          <Definition>92897bc6-a5f3-4ffe-ae27-f2e7e33dda49</Definition>
+          <Tab>Field</Tab>
+          <Mandatory>False</Mandatory>
+          <Validation>
+          </Validation>
+          <Description><![CDATA[]]></Description>
+        </GenericProperty>
+        <GenericProperty>
+          <Name>Error Message</Name>
+          <Alias>errorMessage</Alias>
+          <Type>ec15c1e5-9d90-422a-aa52-4f7622c63bea</Type>
+          <Definition>0cc0eba1-9960-42c9-bf9b-60e150b429ae</Definition>
+          <Tab>Field</Tab>
+          <Mandatory>False</Mandatory>
+          <Validation>
+          </Validation>
+          <Description><![CDATA[]]></Description>
+        </GenericProperty>
+        <GenericProperty>
+          <Name>Class</Name>
+          <Alias>class</Alias>
+          <Type>ec15c1e5-9d90-422a-aa52-4f7622c63bea</Type>
+          <Definition>0cc0eba1-9960-42c9-bf9b-60e150b429ae</Definition>
+          <Tab>Field</Tab>
+          <Mandatory>False</Mandatory>
+          <Validation>
+          </Validation>
+          <Description><![CDATA[In addition to class 'pRadio'.]]></Description>
+        </GenericProperty>
+        <GenericProperty>
+          <Name>Labels and Values</Name>
+          <Alias>labelsAndValues</Alias>
+          <Type>67db8357-ef57-493e-91ac-936d305e0f2a</Type>
+          <Definition>c6bac0dd-4ab9-45b1-8e30-e4b619ee5da3</Definition>
+          <Tab>Field</Tab>
+          <Mandatory>False</Mandatory>
+          <Validation>
+          </Validation>
+          <Description><![CDATA[Use a new line for every radio button. To set a value different from the label use &gt; (E.g. label>value).]]></Description>
+        </GenericProperty>
+      </GenericProperties>
+      <Tabs>
+        <Tab>
+          <Id>14</Id>
+          <Caption>Field</Caption>
+        </Tab>
+      </Tabs>
+    </DocumentType>
+    <DocumentType>
+      <Info>
+        <Name>Pliable Select</Name>
+        <Alias>PliableSelect</Alias>
+        <Icon>.sprTreeDeveloperMacro</Icon>
+        <Thumbnail>developer.png</Thumbnail>
+        <Description>
+        </Description>
+        <Master>PliableFields</Master>
+        <AllowedTemplates />
+        <DefaultTemplate>
+        </DefaultTemplate>
+      </Info>
+      <Structure />
+      <GenericProperties>
+        <GenericProperty>
+          <Name>Label</Name>
+          <Alias>label</Alias>
+          <Type>60b7dabf-99cd-41eb-b8e9-4d2e669bbde9</Type>
+          <Definition>1251c96c-185c-4e9b-93f4-b48205573cbd</Definition>
+          <Tab>Field</Tab>
+          <Mandatory>False</Mandatory>
+          <Validation>
+          </Validation>
+          <Description><![CDATA[]]></Description>
+        </GenericProperty>
+        <GenericProperty>
+          <Name>Multiple Selections</Name>
+          <Alias>multipleSelections</Alias>
+          <Type>38b352c1-e9f8-4fd8-9324-9a2eab06d97a</Type>
+          <Definition>92897bc6-a5f3-4ffe-ae27-f2e7e33dda49</Definition>
+          <Tab>Field</Tab>
+          <Mandatory>False</Mandatory>
+          <Validation>
+          </Validation>
+          <Description><![CDATA[]]></Description>
+        </GenericProperty>
+        <GenericProperty>
+          <Name>Required</Name>
+          <Alias>required</Alias>
+          <Type>38b352c1-e9f8-4fd8-9324-9a2eab06d97a</Type>
+          <Definition>92897bc6-a5f3-4ffe-ae27-f2e7e33dda49</Definition>
+          <Tab>Field</Tab>
+          <Mandatory>False</Mandatory>
+          <Validation>
+          </Validation>
+          <Description><![CDATA[If checked, first option must be changed. If multiple, at least one option must be selected.]]></Description>
+        </GenericProperty>
+        <GenericProperty>
+          <Name>Error Message</Name>
+          <Alias>errorMessage</Alias>
+          <Type>ec15c1e5-9d90-422a-aa52-4f7622c63bea</Type>
+          <Definition>0cc0eba1-9960-42c9-bf9b-60e150b429ae</Definition>
+          <Tab>Field</Tab>
+          <Mandatory>False</Mandatory>
+          <Validation>
+          </Validation>
+          <Description><![CDATA[]]></Description>
+        </GenericProperty>
+        <GenericProperty>
+          <Name>Class</Name>
+          <Alias>class</Alias>
+          <Type>ec15c1e5-9d90-422a-aa52-4f7622c63bea</Type>
+          <Definition>0cc0eba1-9960-42c9-bf9b-60e150b429ae</Definition>
+          <Tab>Field</Tab>
+          <Mandatory>False</Mandatory>
+          <Validation>
+          </Validation>
+          <Description><![CDATA[In addition to class 'pSelect'.]]></Description>
+        </GenericProperty>
+        <GenericProperty>
+          <Name>Options and Values</Name>
+          <Alias>optionsAndValues</Alias>
+          <Type>67db8357-ef57-493e-91ac-936d305e0f2a</Type>
+          <Definition>c6bac0dd-4ab9-45b1-8e30-e4b619ee5da3</Definition>
+          <Tab>Field</Tab>
+          <Mandatory>False</Mandatory>
+          <Validation>
+          </Validation>
+          <Description><![CDATA[Use a new line for every option. To set a value different from the label use &gt; (E.g. option>value).]]></Description>
+        </GenericProperty>
+      </GenericProperties>
+      <Tabs>
+        <Tab>
+          <Id>15</Id>
+          <Caption>Field</Caption>
+        </Tab>
+      </Tabs>
+    </DocumentType>
+    <DocumentType>
+      <Info>
+        <Name>Pliable Text</Name>
+        <Alias>PliableText</Alias>
+        <Icon>.sprTreeDeveloperMacro</Icon>
+        <Thumbnail>developer.png</Thumbnail>
+        <Description>
+        </Description>
+        <Master>PliableFields</Master>
+        <AllowedTemplates />
+        <DefaultTemplate>
+        </DefaultTemplate>
+      </Info>
+      <Structure />
+      <GenericProperties>
+        <GenericProperty>
+          <Name>Label</Name>
+          <Alias>label</Alias>
+          <Type>60b7dabf-99cd-41eb-b8e9-4d2e669bbde9</Type>
+          <Definition>1251c96c-185c-4e9b-93f4-b48205573cbd</Definition>
+          <Tab>Field</Tab>
+          <Mandatory>False</Mandatory>
+          <Validation>
+          </Validation>
+          <Description><![CDATA[]]></Description>
+        </GenericProperty>
+        <GenericProperty>
+          <Name>Multiple Line</Name>
+          <Alias>multipleLine</Alias>
+          <Type>38b352c1-e9f8-4fd8-9324-9a2eab06d97a</Type>
+          <Definition>92897bc6-a5f3-4ffe-ae27-f2e7e33dda49</Definition>
+          <Tab>Field</Tab>
+          <Mandatory>False</Mandatory>
+          <Validation>
+          </Validation>
+          <Description><![CDATA[]]></Description>
+        </GenericProperty>
+        <GenericProperty>
+          <Name>Required</Name>
+          <Alias>required</Alias>
+          <Type>38b352c1-e9f8-4fd8-9324-9a2eab06d97a</Type>
+          <Definition>92897bc6-a5f3-4ffe-ae27-f2e7e33dda49</Definition>
+          <Tab>Field</Tab>
+          <Mandatory>False</Mandatory>
+          <Validation>
+          </Validation>
+          <Description><![CDATA[]]></Description>
+        </GenericProperty>
+        <GenericProperty>
+          <Name>Regex Validation</Name>
+          <Alias>regexValidation</Alias>
+          <Type>ec15c1e5-9d90-422a-aa52-4f7622c63bea</Type>
+          <Definition>0cc0eba1-9960-42c9-bf9b-60e150b429ae</Definition>
+          <Tab>Field</Tab>
+          <Mandatory>False</Mandatory>
+          <Validation>
+          </Validation>
+          <Description><![CDATA[Won't validate if not required. All expressions are case-insensitive.]]></Description>
+        </GenericProperty>
+        <GenericProperty>
+          <Name>Error Message</Name>
+          <Alias>errorMessage</Alias>
+          <Type>ec15c1e5-9d90-422a-aa52-4f7622c63bea</Type>
+          <Definition>0cc0eba1-9960-42c9-bf9b-60e150b429ae</Definition>
+          <Tab>Field</Tab>
+          <Mandatory>False</Mandatory>
+          <Validation>
+          </Validation>
+          <Description><![CDATA[]]></Description>
+        </GenericProperty>
+        <GenericProperty>
+          <Name>Class</Name>
+          <Alias>class</Alias>
+          <Type>ec15c1e5-9d90-422a-aa52-4f7622c63bea</Type>
+          <Definition>0cc0eba1-9960-42c9-bf9b-60e150b429ae</Definition>
+          <Tab>Field</Tab>
+          <Mandatory>False</Mandatory>
+          <Validation>
+          </Validation>
+          <Description><![CDATA[In addition to class 'pText'.]]></Description>
+        </GenericProperty>
+        <GenericProperty>
+          <Name>Default Value</Name>
+          <Alias>defaultValue</Alias>
+          <Type>ec15c1e5-9d90-422a-aa52-4f7622c63bea</Type>
+          <Definition>0cc0eba1-9960-42c9-bf9b-60e150b429ae</Definition>
+          <Tab>Field</Tab>
+          <Mandatory>False</Mandatory>
+          <Validation>
+          </Validation>
+          <Description><![CDATA[]]></Description>
+        </GenericProperty>
+        <GenericProperty>
+          <Name>Placeholder</Name>
+          <Alias>placeholder</Alias>
+          <Type>38b352c1-e9f8-4fd8-9324-9a2eab06d97a</Type>
+          <Definition>92897bc6-a5f3-4ffe-ae27-f2e7e33dda49</Definition>
+          <Tab>Field</Tab>
+          <Mandatory>False</Mandatory>
+          <Validation>
+          </Validation>
+          <Description><![CDATA[If checked, the Default Value clears on "focus".]]></Description>
+        </GenericProperty>
+      </GenericProperties>
+      <Tabs>
+        <Tab>
+          <Id>16</Id>
+          <Caption>Field</Caption>
+        </Tab>
+      </Tabs>
+    </DocumentType>
+  </DocumentTypes>
+  <Templates />
+  <Stylesheets>
+    <Stylesheet>
+      <Name>PliableForm</Name>
+      <FileName>
+      </FileName>
+      <Content><![CDATA[.pText {
+  border: 1px solid #969696;
+}
+.pHighlightText {
+  border: 1px solid #ff0000;
+}
+.pRequiredCheckbox {
+  border: #ff0000;
+}
+.pErrorMessage {
+  color: #ff0000;
+}
+
+/* For Pliable Form table */
+td.label {
+  text-align: right;
+  padding: 3px;
+  vertical-align: top;
+}
+td.input, td.errorMessage {
+  padding: 3px;
+  vertical-align: top;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+]]></Content>
+    </Stylesheet>
+  </Stylesheets>
+  <Macros>
+    <macro>
+      <name>Pliable  Form</name>
+      <alias>PliableForm</alias>
+      <scriptType>
+      </scriptType>
+      <scriptAssembly>
+      </scriptAssembly>
+      <xslt>PliableForm.xslt</xslt>
+      <useInEditor>True</useInEditor>
+      <refreshRate>0</refreshRate>
+      <scriptingFile>
+      </scriptingFile>
+      <properties>
+        <property name="Form Node Id" alias="formNode" show="False" propertyType="contentPicker" />
+        <property name="Include jQuery" alias="jQuery" show="False" propertyType="bool" />
+      </properties>
+    </macro>
+    <macro>
+      <name>Pliable Form_table</name>
+      <alias>PliableForm_table</alias>
+      <scriptType>
+      </scriptType>
+      <scriptAssembly>
+      </scriptAssembly>
+      <xslt>PliableForm_table.xslt</xslt>
+      <useInEditor>True</useInEditor>
+      <refreshRate>0</refreshRate>
+      <scriptingFile>
+      </scriptingFile>
+      <properties>
+        <property name="Form Node Id" alias="formNode" show="False" propertyType="contentPicker" />
+        <property name="Include jQuery" alias="jQuery" show="False" propertyType="bool" />
+      </properties>
+    </macro>
+  </Macros>
+  <DictionaryItems>
+    <DictionaryItem Key="PliableForm">
+      <Value LanguageId="1" LanguageCultureAlias="en-US"><![CDATA[]]></Value>
+      <DictionaryItem Key="PliableForm.defaultEmailSubject">
+        <Value LanguageId="1" LanguageCultureAlias="en-US"><![CDATA[Pliable Form]]></Value>
+      </DictionaryItem>
+      <DictionaryItem Key="PliableForm.defaultToAddress">
+        <Value LanguageId="1" LanguageCultureAlias="en-US"><![CDATA[email@address.com]]></Value>
+      </DictionaryItem>
+      <DictionaryItem Key="PliableForm.enableSsl">
+        <Value LanguageId="1" LanguageCultureAlias="en-US"><![CDATA[false]]></Value>
+      </DictionaryItem>
+      <DictionaryItem Key="PliableForm.fromAddress">
+        <Value LanguageId="1" LanguageCultureAlias="en-US"><![CDATA[email@address.com]]></Value>
+      </DictionaryItem>
+    </DictionaryItem>
+  </DictionaryItems>
+  <Languages />
+  <DataTypes />
+</umbPackage>
