@@ -1,13 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Web;
-using System.Web.Services;
-using System.Web.Script.Services;
-using System.Net.Mail;
-using umbraco.presentation.nodeFactory;
 using System.Configuration;
-using System.Xml.XPath;
+using System.Net.Mail;
 using System.Text.RegularExpressions;
+using System.Web.Script.Services;
+using System.Web.Services;
+using umbraco.NodeFactory;
 
 namespace PliableForm
 {
@@ -43,8 +40,12 @@ namespace PliableForm
                 // start Node Factory
                 Node page = new Node(request.Id);
 
-                string autoResponderId = page.GetProperty("emailField").Value;
                 string autoResponderEmail = string.Empty;
+                string autoResponderId = string.Empty;
+                if (page.GetProperty("emailField") != null)
+                {
+                    autoResponderId = page.GetProperty("emailField").Value;
+                }
 
                 // construct the email message
                 int rowCount = 0;
@@ -52,6 +53,7 @@ namespace PliableForm
                 for (int i = 0; i < request.Values.Length; i++)
                 {
                     string name = request.Names[i];
+                    string nodeName = string.Empty;
                     int index = request.FieldIds[i].LastIndexOf('_') + 1;
                     if (index > 0)
                     {
@@ -68,6 +70,7 @@ namespace PliableForm
                             Node node = new Node(id);
                             if (node != null)
                             {
+                                nodeName = node.Name;
                                 if (node.GetProperty("label").Value.Length > 0)
                                 {
                                     name = node.GetProperty("label").Value;
@@ -100,23 +103,24 @@ namespace PliableForm
 
                 // determine the to address
                 string emailTo = page.GetProperty("toAddress").Value;
-                if (emailTo == null || emailTo.Length < 1)
+
+                if (string.IsNullOrEmpty(emailTo))
                 {
-                    emailTo = ConfigurationManager.AppSettings.Get("PliableForm.defaultToAddress");
+                    emailTo = ConfigurationManager.AppSettings["PliableForm.defaultToAddress"];
                     if (emailTo == null)
                     {
                         emailTo = umbraco.library.GetDictionaryItem("PliableForm.defaultToAddress");
                     }
                 }
                 string subject = page.GetProperty("emailSubject").Value;
-                if (subject == null || subject.Length < 1)
-	            {
-		            subject = ConfigurationManager.AppSettings.Get("PliableForm.defaultEmailSubject");
+                if (string.IsNullOrEmpty(subject))
+                {
+                    subject = ConfigurationManager.AppSettings["PliableForm.defaultEmailSubject"];
                     if (subject == null)
                     {
                         subject = umbraco.library.GetDictionaryItem("PliableForm.defaultEmailSubject");
                     }
-	            }
+                }
 
                 req = request;
                 MatchEvaluator reEval = new MatchEvaluator(this.replaceFields);
@@ -126,11 +130,11 @@ namespace PliableForm
                 nr.Result = "2";
 
                 // send the autoresponder email
-                if (autoResponderEmail.Length > 4)
+                if (!string.IsNullOrEmpty(autoResponderEmail))
                 {
                     string ARbody = page.GetProperty("autoResponderText").Value;
                     bool ARisHtml = false;
-                    if (ARbody.Length < 1)
+                    if (string.IsNullOrEmpty(ARbody))
                     {
                         ARbody = page.GetProperty("autoResponderHtml").Value;
                         ARisHtml = true;
@@ -152,12 +156,12 @@ namespace PliableForm
 
         public void SendEmailMessage(string toAddress, string emailBody, string emailSubject, bool isHtml)
         {
-            string enableSsl = ConfigurationManager.AppSettings.Get("PliableForm.enableSsl");
+            string enableSsl = ConfigurationManager.AppSettings["PliableForm.enableSsl"];
             if (enableSsl == null)
             {
                 enableSsl = umbraco.library.GetDictionaryItem("PliableForm.enableSsl");
             }
-            string emailFrom = ConfigurationManager.AppSettings.Get("PliableForm.fromAddress");
+            string emailFrom = ConfigurationManager.AppSettings["PliableForm.fromAddress"];
             if (emailFrom == null)
             {
                 emailFrom = umbraco.library.GetDictionaryItem("PliableForm.fromAddress");
