@@ -1,0 +1,5 @@
+C:\Users\jonc.C2MEDIA\Documents\Visual Studio 2010\Projects\PliableForm\PliableForm\bin\PliableForm.dll
+C:\Users\jonc.C2MEDIA\Documents\Visual Studio 2010\Projects\PliableForm\PliableForm\bin\PliableForm.pdb
+C:\Users\jonc.C2MEDIA\Documents\Visual Studio 2010\Projects\PliableForm\PliableForm\obj\Release\ResolveAssemblyReference.cache
+C:\Users\jonc.C2MEDIA\Documents\Visual Studio 2010\Projects\PliableForm\PliableForm\obj\Release\PliableForm.dll
+C:\Users\jonc.C2MEDIA\Documents\Visual Studio 2010\Projects\PliableForm\PliableForm\obj\Release\PliableForm.pdb
