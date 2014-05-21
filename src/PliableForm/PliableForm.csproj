@@ -210,6 +210,7 @@
   <ItemGroup>
     <Content Include="package.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
     </Content>
     <Content Include="PliableForm.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
