@@ -277,7 +277,7 @@ $.fn.placeholder = function(defaultValue) {
       $(this).removeClass('placeholder').addClass('userinput');
     }
     $(this).focus(function() {
-      if(val == this.value) {
+        if(val == this.value && this.type != "button") {
         this.value = "";
       }
       $(this).removeClass('placeholder').addClass('userinput');

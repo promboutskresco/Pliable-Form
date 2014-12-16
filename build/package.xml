@@ -2,6 +2,11 @@
 <umbPackage>
   <files>
     <file>
+      <guid>PliableForm.cshtml</guid>
+      <orgPath>/MacroScripts</orgPath>
+      <orgName>PliableForm.cshtml</orgName>
+    </file>
+    <file>
       <guid>PliableForm.xslt</guid>
       <orgPath>/xslt</orgPath>
       <orgName>PliableForm.xslt</orgName>
@@ -30,7 +35,7 @@
   <info>
     <package>
       <name>Pliable Form</name>
-      <version>1.4</version>
+      <version>1.5</version>
       <license url="http://www.gnu.org/licenses/gpl.html">GPL</license>
       <url>http://www.c2experience.com/</url>
       <requirements>
