@@ -1,0 +1,239 @@
+@inherits umbraco.MacroEngines.DynamicNodeContext
+
+@using System.Text.RegularExpressions
+
+@{
+	var startNodeID = Parameter.formNode;
+    if(string.IsNullOrEmpty(startNodeID))
+    {
+        startNodeID = Model.Id;
+    }
+	var formPage = Model.NodeById(startNodeID);
+	int currentNodeID;
+	var classname = "";
+	var prefix = "";
+	var regexValid = "";
+
+    int counter = 0;
+	
+		
+	if (formPage.Children().Where("Visible").Any())
+	{
+		<div id="PliableForm">
+			@Model.formContent
+			@foreach (var child in formPage.Children().Where("Visible"))
+			{
+				currentNodeID = child.id;
+				prefix = "p_" + currentNodeID;
+				regexValid = "";
+				@:<p>
+				   
+				<label for="@prefix">@Html.Raw(child.GetProperty("label").Value)</label>
+					
+				  
+				if (child.NodeTypeAlias == "PliableText")
+				{
+					classname = "pText";    
+					if(child.@class.Length > 0)
+					{
+						classname = classname + " " + child.@class;
+					}
+					if (child.required == true)
+					{
+						classname = classname + " pRequiredText";
+					}
+					if (child.defaultValue.Length > 0 && child.placeholder == true)
+					{
+						classname = classname + " placeholder";
+					}
+					if (child.regexValidation.Length > 0)
+					{
+						regexValid = child.regexValidation;
+					}
+					if(child.multipleLine == false)
+					{     
+						<input value="@child.defaultValue" type="text" id="@prefix" name="@child.Name"  class="@classname" data-validation="@regexValid"/>
+					}
+					else if(child.multipleLine == true)
+					{                        
+						<textarea id="@prefix" name="@child.Name" class="@classname" data-validation="@regexValid">@child.defaultValue</textarea>
+					}
+					if ((child.required == true) && (child.errorMessage.Length > 0))
+					{
+						var prefixError = prefix + "_error";
+						<span class="pErrorMessage" id="@prefixError" style="display:none">@child.errorMessage</span>
+					}
+				}                
+				if (child.NodeTypeAlias == "PliableCheckbox")
+				{
+					classname = "pCheckbox";
+					if(child.@class.Length > 0) 
+					{
+						classname = classname + " " + child.@class;
+					}
+					if (child.required == true)
+					{
+						classname = classname + " pRequiredCheckbox";
+					}
+					if (child.@checked == true)
+					{
+						<input type="checkbox" id="@prefix" name="@child.Name" class="@classname" checked/>
+					}
+					else if(child.@checked == false)
+					{
+						<input type="checkbox" id="@prefix" name="@child.Name" class="@classname"  />
+					}
+					if ((child.required == true) && (child.errorMessage.Length > 0))
+					{
+						var prefixError = prefix + "_error";
+						<span class="pErrorMessage" id="@prefixError" style="display:none">@child.errorMessage</span>
+					}
+				}
+				if (child.NodeTypeAlias == "PliableRadioList")
+				{     
+					classname = "pRadio ";
+					var positionPrefix = "p" + child.Index() + "_" + currentNodeID;
+					var extraClassName = "pRadio " + (child.@class);
+								 
+					if (child.required == true)
+					{
+						classname = classname + " pRequiredRadioList";
+					}
+					if (child.@class.Length > 0) 
+					{
+						classname = classname + " " + child.@class;
+					}
+					<span id="@prefix" class="@classname">
+				                       
+					@foreach (string line in Regex.Split(child.labelsAndValues, "\n"))
+					{
+						var inputValue = line;
+						var labelValue = line;
+
+                        string chkListId = string.Format("{1}_{0}", positionPrefix, counter++);
+						<span class="@extraClassName">
+							@if (line.Contains(">"))
+							{
+								inputValue = inputValue.Substring(inputValue.LastIndexOf(">") + 1);  
+								int index = line.IndexOf('>');
+								labelValue = line.Substring(0, index);                                                       
+							}
+                            <label for="@chkListId">@labelValue</label>
+							<input value="@inputValue" type="radio" name="@child.Name" id="@chkListId" class="@extraClassName" />  							
+						</span>
+					}      
+					</span>       
+					if ((child.required == true) && (child.errorMessage.Length > 0))
+					{
+						var prefixError = prefix + "_error";
+						<span class="pErrorMessage" id="@prefixError" style="display:none">@child.errorMessage</span>
+					}     
+				}
+				if (child.NodeTypeAlias == "PliableCheckboxList")
+				{
+					classname = "pCheckboxList ";
+					var positionPrefix = "p" + child.Index() + "_" + currentNodeID;
+					
+					<span class="@prefix">
+
+					@if (child.@class.Length > 0) 
+					{
+						classname = classname + " " + child.@class;
+					}
+					@foreach (string line in Regex.Split(child.labelsAndValues, "\n"))
+					{
+						var inputValue = line;
+						var labelValue = line;
+                        string chkListId = string.Format("{1}_{0}", positionPrefix, counter++);
+						<span class="@child">
+							@if (line.Contains(">"))
+							{
+								inputValue = inputValue.Substring(inputValue.LastIndexOf(">") + 1);  
+								int index = line.IndexOf('>');
+								labelValue = line.Substring(0, index);                                                       
+							}
+                            <label for="@chkListId">@labelValue</label>
+							<input value="@inputValue" type="checkbox" name="@child.Name" id="@chkListId" class="@classname" />  
+						</span>
+					}      
+					</span>       
+					if ((child.required == true) && (child.errorMessage.Length > 0))
+					{
+						var prefixError = prefix + "_error";
+						<span class="pErrorMessage" id="@prefixError" style="display:none">@child.errorMessage</span>
+					}     
+				}
+			   
+				if (child.NodeTypeAlias == "PliableSelect")
+				{
+					classname = "pSelect ";
+					if (child.@class.Length > 0) 
+					{
+						classname = classname + " " + child.@class;
+					}
+					if (child.required == true)
+					{
+						classname = classname + " pRequiredSelect";
+					}
+					
+					if (child.multipleSelections == true)
+					{
+						@:<select id="@prefix" name="@child.Name" class="@classname" multiple="multiple">
+					}
+					else if(@child.multipleSelections == false)
+					{
+						@:<select id="@prefix" name="@child.Name" class="@classname">
+					}
+					foreach (string line in Regex.Split(child.optionsAndValues, "\n"))
+					{                        
+						var inputValue = line;                        
+						if (line.Contains(">"))
+						{
+							inputValue = inputValue.Substring(inputValue.LastIndexOf(">") + 1);                                                     
+						}                                               
+						if (line.Contains("\r"))
+						{
+						   inputValue = inputValue.Replace("\r", "");
+						}
+						<option value="@inputValue">@inputValue</option> 
+					}    
+					@:</select>
+					if ((child.required == true) && (child.errorMessage.Length > 0))
+					{
+						var prefixError = prefix + "_error";
+						<span class="pErrorMessage" id="@prefixError" style="display:none">@child.errorMessage</span>
+					}             
+				}   
+			@:</p> 
+			}
+		<p><input type="button" value="@formPage.submitButtonText" class="pSubmit" /></p>
+		</div>    
+		string image = formPage.loadingImage;
+		if(!string.IsNullOrEmpty(image))
+		{
+			var img = Library.MediaById(Convert.ToInt32(formPage.LoadingImage));
+			<div id="PliableForm_loading" style="display:none">
+				<img src="@img.Url" alt="@img.Name" />
+			</div>
+		}
+		
+		<div id="PliableForm_success" style="display:none">
+			@formPage.successContent
+		</div>
+	
+		<div id="PliableForm_error" style="display:none">
+			@formPage.errorContent
+		</div>
+		
+		if(!string.IsNullOrEmpty(startNodeID.ToString()))
+		{
+			<input id="PliableForm_id" type="hidden" value="@startNodeID" />
+		}
+	
+		if (@Parameter.jQuery == "1")
+		{
+			<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
+		}
+		<script type="text/javascript" src="/scripts/PliableForm.js"></script>    
+	} 	
+}
