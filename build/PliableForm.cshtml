@@ -4,11 +4,17 @@
 
 @{
 	var startNodeID = Parameter.formNode;
+    if(string.IsNullOrEmpty(startNodeID))
+    {
+        startNodeID = Model.Id;
+    }
 	var formPage = Model.NodeById(startNodeID);
 	int currentNodeID;
 	var classname = "";
 	var prefix = "";
-	var regexValid = "";    
+	var regexValid = "";
+
+    int counter = 0;
 	
 		
 	if (formPage.Children().Where("Visible").Any())
@@ -98,11 +104,13 @@
 						classname = classname + " " + child.@class;
 					}
 					<span id="@prefix" class="@classname">
-				   
+				                       
 					@foreach (string line in Regex.Split(child.labelsAndValues, "\n"))
-					{                        
+					{
 						var inputValue = line;
 						var labelValue = line;
+
+                        string chkListId = string.Format("{1}_{0}", positionPrefix, counter++);
 						<span class="@extraClassName">
 							@if (line.Contains(">"))
 							{
@@ -110,8 +118,8 @@
 								int index = line.IndexOf('>');
 								labelValue = line.Substring(0, index);                                                       
 							}
-							<input value="@inputValue" type="radio" name="@child.Name" id="@positionPrefix" class="@extraClassName" />  
-							<label for="@positionPrefix">@labelValue</label>
+                            <label for="@chkListId">@labelValue</label>
+							<input value="@inputValue" type="radio" name="@child.Name" id="@chkListId" class="@extraClassName" />  							
 						</span>
 					}      
 					</span>       
@@ -133,9 +141,10 @@
 						classname = classname + " " + child.@class;
 					}
 					@foreach (string line in Regex.Split(child.labelsAndValues, "\n"))
-					{                        
+					{
 						var inputValue = line;
 						var labelValue = line;
+                        string chkListId = string.Format("{1}_{0}", positionPrefix, counter++);
 						<span class="@child">
 							@if (line.Contains(">"))
 							{
@@ -143,8 +152,8 @@
 								int index = line.IndexOf('>');
 								labelValue = line.Substring(0, index);                                                       
 							}
-							<input value="@inputValue" type="checkbox" name="@child.Name" id="@positionPrefix" class="@classname" />  
-							<label for="@positionPrefix">@labelValue</label>
+                            <label for="@chkListId">@labelValue</label>
+							<input value="@inputValue" type="checkbox" name="@child.Name" id="@chkListId" class="@classname" />  
 						</span>
 					}      
 					</span>       

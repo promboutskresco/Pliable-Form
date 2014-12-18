@@ -706,16 +706,17 @@ td.input, td.errorMessage {
   </Stylesheets>
   <Macros>
     <macro>
-      <name>Pliable  Form</name>
+      <name>Pliable Form</name>
       <alias>PliableForm</alias>
       <scriptType>
       </scriptType>
       <scriptAssembly>
       </scriptAssembly>
-      <xslt>PliableForm.xslt</xslt>
+      <xslt></xslt>
       <useInEditor>True</useInEditor>
       <refreshRate>0</refreshRate>
       <scriptingFile>
+        PliableForm.cshtml
       </scriptingFile>
       <properties>
         <property name="Form Node Id" alias="formNode" show="False" propertyType="contentPicker" />
