@@ -132,11 +132,18 @@ namespace PliableForm
                 // send the autoresponder email
                 if (!string.IsNullOrEmpty(autoResponderEmail))
                 {
-                    string ARbody = page.GetProperty("autoResponderText").Value;
+                    string ARbody = string.Empty;
+                    try
+                    {
+                        ARbody = page.GetProperty("autoResponderText").Value;
+                    }
+                    catch { /* Swallow Exception */ }
+
                     bool ARisHtml = false;
                     if (string.IsNullOrEmpty(ARbody))
                     {
                         ARbody = page.GetProperty("autoResponderHtml").Value;
+                        ARbody = ARbody.Replace("<%OriginalMessage%>", message.Replace("<html><head></head><body>", string.Empty).Replace("</body></html>", string.Empty));
                         ARisHtml = true;
                     }
 
