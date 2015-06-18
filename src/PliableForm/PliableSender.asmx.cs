@@ -143,7 +143,7 @@ namespace PliableForm
                     if (string.IsNullOrEmpty(ARbody))
                     {
                         ARbody = page.GetProperty("autoResponderHtml").Value;
-                        ARbody = ARbody.Replace("<%OriginalMessage%>", message.Replace("<html><head></head><body>", string.Empty).Replace("</body></html>", string.Empty));
+                        ARbody = ARbody.Replace("[OriginalMessage]", message.Replace("<html><head></head><body>", string.Empty).Replace("</body></html>", string.Empty));
                         ARisHtml = true;
                     }
 
