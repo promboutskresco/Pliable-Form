@@ -53,7 +53,7 @@ namespace PliableForm
                 for (int i = 0; i < request.Values.Length; i++)
                 {
                     string name = request.Names[i];
-                    string nodeName = string.Empty;
+                    //string nodeName = string.Empty;
                     int index = request.FieldIds[i].LastIndexOf('_') + 1;
                     if (index > 0)
                     {
@@ -70,32 +70,41 @@ namespace PliableForm
                             Node node = new Node(id);
                             if (node != null)
                             {
-                                nodeName = node.Name;
-                                if (node.GetProperty("label").Value.Length > 0)
+                                //nodeName = node.Name;
+                                name = node.Name;
+                                try
                                 {
-                                    name = node.GetProperty("label").Value;
-                                }
-                                else if (node.NodeTypeAlias == "PliableText")
-                                {
-                                    if (node.GetProperty("defaultValue").Value.Length > 0)
+                                    if (node.GetProperty("label").Value.Length > 0)
                                     {
-                                        name = node.GetProperty("defaultValue").Value;
+                                        name = node.GetProperty("label").Value;
+                                    }
+                                    else if (node.NodeTypeAlias == "PliableText")
+                                    {
+                                        if (node.GetProperty("defaultValue").Value.Length > 0)
+                                        {
+                                            name = node.GetProperty("defaultValue").Value;
+                                        }
                                     }
                                 }
+                                catch { }
                             }
                         }
                     }
                     if (name.Length > 0)
                     {
                         rowCount++;
-                        if (rowCount % 2 == 0)
+                        try
                         {
-                            message += string.Format("<tr><td style=\"background-color: #ffffff; padding: 4px 8px; vertical-align: top; width: 120px;\">{0}</td><td style=\"background-color: #ffffff; padding: 4px 8px; vertical-align: top;\">{1}</td></tr>", name, request.Values[i]);
+                            if (rowCount % 2 == 0)
+                            {
+                                message += string.Format("<tr><td style=\"background-color: #ffffff; padding: 4px 8px; vertical-align: top; width: 120px;\">{0}</td><td style=\"background-color: #ffffff; padding: 4px 8px; vertical-align: top;\">{1}</td></tr>", name, request.Values[i]);
+                            }
+                            else
+                            {
+                                message += string.Format("<tr><td style=\"background-color: #ebf5ff; padding: 4px 8px; vertical-align: top; width: 120px;\">{0}</td><td style=\"background-color: #ebf5ff; padding: 4px 8px; vertical-align: top;\">{1}</td></tr>", name, request.Values[i]);
+                            }
                         }
-                        else
-                        {
-                            message += string.Format("<tr><td style=\"background-color: #ebf5ff; padding: 4px 8px; vertical-align: top; width: 120px;\">{0}</td><td style=\"background-color: #ebf5ff; padding: 4px 8px; vertical-align: top;\">{1}</td></tr>", name, request.Values[i]);
-                        }
+                        catch { }
                     }
                 }
                 message += "</table></body></html>";
@@ -155,7 +164,13 @@ namespace PliableForm
             catch (Exception ex)
             {
                 nr.Result = "3";
-                nr.Msg = ex.Message;
+
+                var innerEx = string.Empty;
+                if(ex.InnerException != null)
+                {
+                    innerEx = ex.InnerException.StackTrace;
+                }
+                nr.Msg = string.Format("Message: {0} StackTrace: {1} {2}", ex.Message, ex.StackTrace, innerEx);
             }
 
             return nr;
