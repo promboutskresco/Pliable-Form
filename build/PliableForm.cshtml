@@ -27,13 +27,23 @@
 				prefix = "p_" + currentNodeID;
 				regexValid = "";
 				@:<p>
-				   
-				<label for="@prefix">@Html.Raw(child.GetProperty("label").Value)</label>
-					
-				  
+				 
+				var extraClass = "";
+				var extraInputClass = "pWideInput";
+				if (child.NodeTypeAlias == "PliableLabel")
+				{
+					extraClass = "pWideLabel ";
+				}
+				if(!string.IsNullOrEmpty(child.GetProperty("label").Value))
+				{
+					extraInputClass = "";
+					<label class="@extraClass" for="@prefix">@Html.Raw(child.GetProperty("label").Value)</label>
+				}	
+				
+				classname = extraClass + classname;
 				if (child.NodeTypeAlias == "PliableText")
 				{
-					classname = "pText";    
+					classname += "pText";    
 					if(child.@class.Length > 0)
 					{
 						classname = classname + " " + child.@class;
@@ -63,10 +73,10 @@
 						var prefixError = prefix + "_error";
 						<span class="pErrorMessage" id="@prefixError" style="display:none">@child.errorMessage</span>
 					}
-				}                
+				}    
 				if (child.NodeTypeAlias == "PliableCheckbox")
 				{
-					classname = "pCheckbox";
+					classname += "pCheckbox";
 					if(child.@class.Length > 0) 
 					{
 						classname = classname + " " + child.@class;
@@ -91,7 +101,7 @@
 				}
 				if (child.NodeTypeAlias == "PliableRadioList")
 				{     
-					classname = "pRadio ";
+					classname += "pRadio ";
 					var positionPrefix = "p" + child.Index() + "_" + currentNodeID;
 					var extraClassName = "pRadio " + (child.@class);
 								 
@@ -131,7 +141,7 @@
 				}
 				if (child.NodeTypeAlias == "PliableCheckboxList")
 				{
-					classname = "pCheckboxList ";
+					classname += "pCheckboxList ";
 					var positionPrefix = "p" + child.Index() + "_" + currentNodeID;
 					
 					<span class="@prefix">
@@ -166,7 +176,7 @@
 			   
 				if (child.NodeTypeAlias == "PliableSelect")
 				{
-					classname = "pSelect ";
+					classname += "pSelect ";
 					if (child.@class.Length > 0) 
 					{
 						classname = classname + " " + child.@class;
