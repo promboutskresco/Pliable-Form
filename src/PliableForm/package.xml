@@ -232,6 +232,7 @@
         <DocumentType>PliableSelect</DocumentType>
         <DocumentType>PliableText</DocumentType>
         <DocumentType>PliableCheckboxList</DocumentType>
+        <DocumentType>PliableLabel</DocumentType>
       </Structure>
       <GenericProperties>
         <GenericProperty>
