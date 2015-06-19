@@ -35,7 +35,7 @@
   <info>
     <package>
       <name>Pliable Form</name>
-      <version>1.6</version>
+      <version>1.7</version>
       <license url="http://www.gnu.org/licenses/gpl.html">GPL</license>
       <url>http://www.c2experience.com/</url>
       <requirements>
@@ -654,6 +654,49 @@
         <Tab>
           <Id>16</Id>
           <Caption>Field</Caption>
+        </Tab>
+      </Tabs>
+    </DocumentType>
+    <DocumentType>
+      <Info>
+        <Name>Pliable Label</Name>
+        <Alias>PliableLabel</Alias>
+        <Icon>.sprTreeDeveloperMacro</Icon>
+        <Thumbnail>developer.png</Thumbnail>
+        <Description></Description>
+        <AllowAtRoot>False</AllowAtRoot>
+        <Master>PliableFields</Master>
+        <AllowedTemplates />
+        <DefaultTemplate></DefaultTemplate>
+      </Info>
+      <Structure />
+      <GenericProperties>
+        <GenericProperty>
+          <Name>Label</Name>
+          <Alias>label</Alias>
+          <Type>60b7dabf-99cd-41eb-b8e9-4d2e669bbde9</Type>
+          <Definition>1251c96c-185c-4e9b-93f4-b48205573cbd</Definition>
+          <Tab>Field</Tab>
+          <Mandatory>False</Mandatory>
+          <Validation></Validation>
+          <Description><![CDATA[]]></Description>
+        </GenericProperty>
+        <GenericProperty>
+          <Name>Class</Name>
+          <Alias>class</Alias>
+          <Type>ec15c1e5-9d90-422a-aa52-4f7622c63bea</Type>
+          <Definition>0cc0eba1-9960-42c9-bf9b-60e150b429ae</Definition>
+          <Tab>Field</Tab>
+          <Mandatory>False</Mandatory>
+          <Validation></Validation>
+          <Description><![CDATA[In addition to class 'pText'.]]></Description>
+        </GenericProperty>
+      </GenericProperties>
+      <Tabs>
+        <Tab>
+          <Id>23</Id>
+          <Caption>Field</Caption>
+          <SortOrder>0</SortOrder>
         </Tab>
       </Tabs>
     </DocumentType>
