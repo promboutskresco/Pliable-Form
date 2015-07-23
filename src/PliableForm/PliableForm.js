@@ -3,7 +3,7 @@ jQuery(function () {
         var pliable = new PliableForm();
     }
     else {
-        alert('Please surround all the field items with an element that has an ID of "PliableForm".');
+        console.log('Please surround all the field items with an element that has an ID of "PliableForm".');
     }
 });
 
@@ -112,23 +112,27 @@ function PliableForm() {
                     var re = new RegExp($this.attr('data-validation'), 'i');
                     if (re.test(field.value)) {
                         $this.removeClass('pHighlightText');
+                        $this.parent().removeClass('state-error');
                         jQuery('#' + field.id + '_error').hide();
                         return true;
                     }
                     else {
                         $this.addClass('pHighlightText');
+                        $this.parent().addClass('state-error');
                         jQuery('#' + field.id + '_error').show();
                         return false;
                     }
                 }
                 else {
                     $this.removeClass('pHighlightText');
+                    $this.parent().removeClass('state-error');
                     jQuery('#' + field.id + '_error').hide();
                     return true;
                 }
             }
             else {
                 $this.addClass('pHighlightText');
+                $this.parent().addClass('state-error');
                 jQuery('#' + field.id + '_error').show();
                 return false;
             }
@@ -147,11 +151,13 @@ function PliableForm() {
             }
             if (field.selectedIndex > index) {
                 $this.removeClass('pHighlightSelect');
+                $this.parent().removeClass('state-error');
                 jQuery('#' + field.id + '_error').hide();
                 return true;
             }
             else {
                 $this.addClass('pHighlightSelect');
+                $this.parent().addClass('state-error');
                 jQuery('#' + field.id + '_error').show();
                 return false;
             }
@@ -164,13 +170,15 @@ function PliableForm() {
     function checkRequiredCheckbox(field) {
         if (!field.disabled) {
             var $this = $(field);
-            if ($this.attr('checked')) {
+            if ($this.prop('checked')) {
                 $this.removeClass('pHighlightCheckbox');
+                $this.parent().removeClass('state-error');
                 jQuery('#' + field.id + '_error').hide();
                 return true;
             }
             else {
                 $this.addClass('pHighlightCheckbox');
+                $this.parent().addClass('state-error');
                 jQuery('#' + field.id + '_error').show();
                 return false;
             }
@@ -184,46 +192,71 @@ function PliableForm() {
         var $this = $(field);
         var count = 0;
         $this.find('input[type=radio]').each(function () {
-            if ($(this).attr('checked')) {
+            if ($(this).prop('checked')) {
                 count++;
             }
         });
         if (count > 0) {
             $this.removeClass('pHighlightRadio');
+            $this.parent().removeClass('has-warning');
+            $this.find('input[type=radio]').each(function () {
+                $(this).parent().removeClass('state-error');
+            });
             jQuery('#' + field.id + '_error').hide();
             return true;
         }
         else {
             $this.addClass('pHighlightRadio');
+            $this.parent().addClass('has-warning');
+            $this.find('input[type=radio]').each(function () {
+                $(this).parent().addClass('state-error');
+            });
             jQuery('#' + field.id + '_error').show();
             return false;
         }
     }
 
+    function checkNextFieldVisible(field) {
+        var $this = $(field);
+        var count = 0;
+        $this.find('input[type=radio]').each(function () {
+            if ($(this).prop('checked') &&
+               $(this).val().toLowerCase().trim() == "ja") {
+                // Show next if invisible
+                $this.closest('section').next().fadeIn("fast", function () {
+                    // Animation complete
+                });
+            }
+        });
+    }
+
     function validateForm() {
         var count = 0;
-        $form.find('input.pRequiredText, textarea.pRequiredText').each(function () {
+        $form.find('input.pRequiredText:visible, textarea.pRequiredText:visible').each(function () {
             if (!checkRequiredText(this)) {
                 count++;
             }
         });
-        $form.find('select.pRequiredSelect').each(function () {
+        $form.find('select.pRequiredSelect:visible').each(function () {
             if (!checkRequiredSelect(this)) {
                 count++;
             }
         });
-        $form.find('input.pRequiredCheckbox').each(function () {
+        $form.find('input.pRequiredCheckbox:visible').each(function () {
             if (!checkRequiredCheckbox(this)) {
                 count++;
             }
         });
-        $form.find('.pRequiredRadioList').each(function () {
+        $form.find('.pRequiredRadioList:visible').each(function () {
             if (!checkRequiredRadioList(this)) {
                 count++;
             }
         });
         if (count > 0) {
-            // Validation Failed
+            // Validation failed, scroll to first error 'has-warning'
+            $('html, body').animate({
+                scrollTop: $('.has-warning').first().offset().top - 80
+            }, 1500);
             return false;
         }
         else {
@@ -251,6 +284,7 @@ function PliableForm() {
         var list = this;
         jQuery(this).find('input[type=radio]').click(function () {
             checkRequiredRadioList(list);
+            checkNextFieldVisible(list);
         });
     });
     $form.find('input.placeholder, textarea.placeholder').placeholder();
@@ -277,7 +311,7 @@ function PliableForm() {
                 $(this).removeClass('placeholder').addClass('userinput');
             }
             $(this).focus(function () {
-                if (val == this.value && this.type != "button") {
+                if (val == this.value) {
                     this.value = "";
                 }
                 $(this).removeClass('placeholder').addClass('userinput');

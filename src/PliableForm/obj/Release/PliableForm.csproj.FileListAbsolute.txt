@@ -246,3 +246,4 @@ C:\Data\Projects\Pliable-Form\trunk\src\PliableForm\obj\Release\PliableForm.cspr
 C:\Data\Projects\Pliable-Form\trunk\src\PliableForm\obj\Release\PliableForm.dll
 C:\Data\Projects\Pliable-Form\trunk\src\PliableForm\obj\Release\PliableForm.pdb
 C:\Data\Projects\Pliable-Form\trunk\src\PliableForm\bin\PliableForm.cshtml
+C:\Data\Projects\Pliable-Form\trunk\src\PliableForm\bin\PliableBootstrapForm.cshtml

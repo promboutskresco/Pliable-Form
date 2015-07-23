@@ -18,7 +18,7 @@ Features
 
 Requirements
 ------------
-* Umbraco 4.5.x - 4.7.x with the new schema (for legacy, use the added legacy xslt in the archive to help convert the latest xslt to a legacy xslt.)
+* Umbraco 6.2.x (for legacy, use the added legacy xslt in the archive to help convert the latest xslt to a legacy xslt.)
 * .NET 4.0 (for 3.5, use the 3.5 build download)
 
 
@@ -42,6 +42,8 @@ The project concept won the CodeGarden US 2008 package contest. Then I gave the 
 
 Release Notes
 -------------
+1.8.0 - Refactored CSHTML to comply with Bootstrap 3 / Sky Forms. Added extra field types for wide labels and optional foldout questions. Added field type for image list (radiobutton images). Deprecated XSLT. Fully switched to Umbraco 6+
+
 1.3.0 - Added token ability to the email subject and styled the html email
 
 1.2.1 - Forgot to add the CheckboxList Document Type to 1.2.
