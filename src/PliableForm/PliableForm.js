@@ -227,6 +227,13 @@ function PliableForm() {
                     // Animation complete
                 });
             }
+            if ($(this).prop('checked') &&
+               $(this).val().toLowerCase().trim() == "nee") {
+                // Hide next if invisible
+                $this.closest('section').next().fadeOut("fast", function () {
+                    // Animation complete
+                });
+            }
         });
     }
 
