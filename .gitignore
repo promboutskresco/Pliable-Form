@@ -1,0 +1,8 @@
+
+src/.vs/config/applicationhost.config
+src/.vs/PliableForm/v15/.suo
+src/.vs/PliableForm/v15/Server/sqlite3/db.lock
+*.ide
+/src/.vs/PliableForm/v15/Server/sqlite3
+/src/packages
+/src/PliableForm/App_Data/NuGetBackup/20190215-094046
