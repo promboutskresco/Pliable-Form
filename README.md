@@ -1,3 +1,5 @@
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fprombouts%2FPliable-Form.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fprombouts%2FPliable-Form?ref=badge_shield)
+
 Pliable Ajax Contact Form
 =========================
 
@@ -168,3 +170,6 @@ This optional file is only included to help you understand some of the classes t
 * **.pErrorMessage** - Default class on the span containing the validation error message.
 * **.defaultValue** - Appended class if the input type text field or textarea contains the default string.
 * **.userValue** - Appended class if the default value of an input type text field or textarea is erased.
+
+## License
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fprombouts%2FPliable-Form.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fprombouts%2FPliable-Form?ref=badge_large)
